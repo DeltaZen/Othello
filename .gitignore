@@ -1,0 +1,5 @@
+__target__/
+__pycache__/
+build/
+*.xdc
+*~

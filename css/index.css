@@ -1,0 +1,239 @@
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+     background: linear-gradient(to left, rgba(72, 0, 0,.5) 0%,rgba(77, 0, 0,.5) 3%,rgba(89, 13, 13,.5) 6%,rgba(77, 0, 0,.5) 6%,rgba(77, 0, 0,.5) 9%,rgba(77, 19, 0,.5) 12%,rgba(77, 0, 0,.5) 15%,rgba(92, 10, 10,.5) 17%,rgba(77, 0, 0,.5) 19%,rgba(77, 0, 0,.5) 21%,rgba(97, 5, 5,.5) 23%,rgba(97, 5, 5,.5) 25%,rgba(77, 0, 0,.5) 27%,rgba(69, 8, 8,.5) 29%,rgba(77, 0, 0,.5) 29%,rgba(77, 0, 0,.5) 32%,rgba(77, 0, 0,.5) 34%,rgba(77, 0, 0,.5) 37%,rgba(97, 5, 5,.5) 40%,rgba(97, 5, 5,.5) 43%,rgba(77, 0, 0,.5) 43%,rgba(77, 0, 0,.5) 44%,rgba(77, 0, 0,.5) 47%,rgba(69, 8, 8,.5) 49%,rgba(77, 0, 0,.5) 52%,rgba(97, 5, 5,.5) 54%,rgba(92, 10, 10,.5) 56%,rgba(77, 0, 0,.5) 59%,rgba(92, 10, 10,.5) 61%,rgba(97, 5, 5,.5) 64%,rgba(77, 0, 0,.5) 64%,rgba(92, 10, 10,.5) 66%,rgba(77, 0, 0,.5) 69%,rgba(89, 13, 13,.5) 71%,rgba(77, 0, 0,.5) 74%,rgba(77, 0, 0,.5) 76%,rgba(77, 0, 0,.5) 77%,rgba(77, 0, 0,.5) 80%,rgba(97, 5, 5,.5) 81%,rgba(77, 0, 0,.5) 83%,rgba(97, 5, 5,.5) 83%,rgba(97, 5, 5,.5) 85%,rgba(77, 0, 0,.5) 87%,rgba(97, 5, 5,.5) 89%,rgba(97, 5, 5,.5) 91%,rgba(77, 0, 0,.5) 92%,rgba(89, 13, 13,.5) 96%,rgba(77, 0, 0,.5) 97%,rgba(77, 0, 0,.5) 97%,rgba(77, 0, 0,.5) 98%,rgba(77, 0, 0,.5) 100%),
+     linear-gradient(to right, rgba(72, 0, 0,.3) 0%,rgba(77, 0, 0,.3) 3%,rgba(89, 13, 13,.3) 6%,rgba(77, 0, 0,.3) 6%,rgba(77, 0, 0,.3) 9%,rgba(77, 19, 0,.3) 12%,rgba(77, 0, 0,.3) 15%,rgba(92, 10, 10,.3) 17%,rgba(77, 0, 0,.3) 19%,rgba(77, 0, 0,.3) 21%,rgba(97, 5, 5,.3) 23%,rgba(97, 5, 5,.3) 25%,rgba(77, 0, 0,.3) 27%,rgba(69, 8, 8,.3) 29%,rgba(77, 0, 0,.3) 29%,rgba(77, 0, 0,.3) 32%,rgba(77, 0, 0,.3) 34%,rgba(77, 0, 0,.3) 37%,rgba(97, 5, 5,.3) 40%,rgba(97, 5, 5,.3) 43%,rgba(77, 0, 0,.3) 43%,rgba(77, 0, 0,.3) 44%,rgba(77, 0, 0,.3) 47%,rgba(69, 8, 8,.3) 49%,rgba(77, 0, 0,.3) 52%,rgba(97, 5, 5,.3) 54%,rgba(92, 10, 10,.3) 56%,rgba(77, 0, 0,.3) 59%,rgba(92, 10, 10,.3) 61%,rgba(97, 5, 5,.3) 64%,rgba(77, 0, 0,.3) 64%,rgba(92, 10, 10,.3) 66%,rgba(77, 0, 0,.3) 69%,rgba(89, 13, 13,.3) 71%,rgba(77, 0, 0,.3) 74%,rgba(77, 0, 0,.3) 76%,rgba(77, 0, 0,.3) 77%,rgba(77, 0, 0,.3) 80%,rgba(97, 5, 5,.3) 81%,rgba(77, 0, 0,.3) 83%,rgba(97, 5, 5,.3) 83%,rgba(97, 5, 5,.3) 85%,rgba(77, 0, 0,.3) 87%,rgba(97, 5, 5,.3) 89%,rgba(97, 5, 5,.3) 91%,rgba(77, 0, 0,.3) 92%,rgba(89, 13, 13,.3) 96%,rgba(77, 0, 0,.3) 97%,rgba(77, 0, 0,.3) 97%,rgba(77, 0, 0,.3) 98%,rgba(77, 0, 0,.3) 100%),
+     linear-gradient(to left, rgba(72, 0, 0,.3) 0%,rgba(77, 0, 0,.3) 3%,rgba(69, 8, 8,.3) 49%,rgba(77, 0, 0,.3) 52%,rgba(97, 5, 5,.3) 54%,rgba(92, 10, 10,.3) 56%,rgba(77, 0, 0,.2) 59%,rgba(92, 10, 10,.3) 61%,rgba(97, 5, 5,.3) 64%,rgba(77, 0, 0,.3) 64%,rgba(92, 10, 10,.3) 66%,rgba(77, 0, 0,.3) 69%,rgba(89, 13, 13,.3) 71%,rgba(77, 0, 0,.3) 74%,rgba(77, 0, 0,.3) 76%,rgba(77, 0, 0,.3) 77%,rgba(77, 0, 0,.3) 80%,rgba(97, 5, 5,.3) 81%,rgba(77, 0, 0,.3) 83%,rgba(97, 5, 5,.3) 83%,rgba(97, 5, 5,.3) 85%,rgba(77, 0, 0,.3) 87%,rgba(97, 5, 5,.3) 89%,rgba(97, 5, 5,.3) 91%,rgba(77, 0, 0,.3) 92%,rgba(89, 13, 13,.3) 96%,rgba(77, 0, 0,.3) 97%,rgba(77, 0, 0,.3) 97%,rgba(77, 0, 0,.3) 98%,rgba(77, 0, 0,.3) 100%);
+
+  background-color: rgb(43, 33, 13);
+  background-size:500px 20px, 300px 20px, 20px 820px;
+  background-position:50% 50%, 70% 70%, 30% 30%;
+  font-family: "Inter", sans-serif;
+  color: #fff;
+}
+
+.logo {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.logo h1 {
+    font-size: 4em;
+    font-weight: 900;
+    background-color: transparent;
+    color: #111;
+    display: block;
+    padding: 0;
+    margin: 0;
+    text-shadow: 1px 1px 5px #000;
+}
+.logo h1:nth-child(2) {
+    position: absolute;
+    background-color: transparent;
+    color: #fff;
+    text-shadow: none;
+    -webkit-clip-path: inset(-1% -1% 50% -1%);
+    clip-path: inset(-1% -1% 50% -1%);
+}
+
+.sub {
+  color: #fff;
+  font-size: 16px;
+  font-weight: 300;
+  margin: 0;
+}
+#home .sub {
+    padding-top: 8px;
+}
+
+.btn {
+    box-shadow: .1vmin .1vmin .5vmin rgba(0,0,0,.5),0 0 .2vmin black inset;
+    background-color: black;
+    background-image: linear-gradient(rgba(255,255,255,.15), transparent);
+    border-radius: 6px;
+    border:none;
+    display:inline-block;
+    padding:8px 16px;
+    vertical-align:middle;
+    overflow:hidden;
+    text-decoration:none;
+    color: #fff;
+    text-align:center;
+    cursor:pointer;
+    white-space:nowrap;
+    -webkit-touch-callout:none;
+    -webkit-user-select:none;
+    -khtml-user-select:none;
+    -moz-user-select:none;
+    -ms-user-select:none;
+    user-select:none
+}
+.btn:hover {
+    box-shadow:0 8px 16px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
+}
+#game .btn {
+    margin-top: 1em;
+    margin-bottom: 0;
+}
+
+#join-btn {
+    margin-top: 40px;
+    margin-bottom: 0;
+    padding: 12px 24px;
+}
+
+#game {
+    margin-top: 10px;
+}
+
+.tag {
+    display:inline-block;
+    padding-left:8px;
+    padding-right:8px;
+    text-align:center;
+    border-radius: 5px;
+}
+
+.black {
+    background-color:#000;
+    color:#fff;
+}
+
+.white {
+    background-color:#fff;
+    color:#000;
+}
+
+.piece {
+    height: 90%;
+    width: 90%;
+    border-radius: 50%;
+    margin: 5%;
+}
+.piece.white {
+    background-image: linear-gradient(rgba(0,0,0,.3), transparent);
+    transform: matrix(1, 0, 0, -1, 0, 0);
+}
+.piece.black {
+    background-image: linear-gradient(rgba(255,255,255,.15), transparent);
+}
+.piece.white,
+.piece.black {
+    box-shadow: .1vmin .1vmin .5vmin rgba(0,0,0,.5),0 0 .2vmin black inset;
+}
+.piece:not(.white):not(.black) {
+    opacity: 0;
+    background-color: red;
+}
+
+.highlight {
+    background-color: rgba(255,255,0,.5);
+    box-shadow: 0 0 1vmin .5vmin rgba(255,255,0,.5);
+}
+
+.board {
+    background:
+        linear-gradient(to bottom, #333 .4%, rgba(0,0,0,.2) .4%, transparent 1%),
+        linear-gradient(to right, #333 .4%, rgba(0,0,0,.2) .4%, transparent 1%),
+        linear-gradient(to top, #333 .4%, rgba(0,0,0,.2) .4%, transparent 1%),
+        linear-gradient(to left, #333 .4%, rgba(0,0,0,.2) .4%, transparent 1%),
+        linear-gradient(150deg, rgba(255,255,255,.3), transparent),
+        repeating-linear-gradient(
+            30deg,
+            rgba(0,0,0,.07) .3%, transparent .3%,
+            transparent .6%, rgba(0,0,0,.07) .6%,
+            rgba(0,0,0,.07) .9%, transparent .9%) top left repeat,
+        repeating-linear-gradient(
+            -30deg,
+            rgba(0,0,0,.07) .3%, transparent .3%,
+            transparent .6%, rgba(0,0,0,.07) .6%,
+            rgba(0,0,0,.07) .9%, transparent .9%) top left repeat;
+    background-color: green;
+    border: 1vmin outset gray;
+    border-radius: 5px;
+    padding: 20px;
+}
+
+#board {
+    box-sizing: border-box;
+    width: 90vw;
+    height: 90vw;
+    max-width: 500px;
+    max-height: 500px;
+    display: grid;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.cell {
+    position: relative;
+    border-right: 1px solid black;
+    border-bottom: 1px solid black;
+}
+.cell:first-child {
+    border-left: 1px solid black;
+}
+
+#footer {
+    font-family: Courier,monospace,sans-serif;
+    position: fixed;
+    bottom: .5em;
+    left: .5em;
+    opacity:0.8;
+    text-decoration: none;
+    -webkit-touch-callout:none;
+    -webkit-user-select:none;
+    -khtml-user-select:none;
+    -moz-user-select:none;
+    -ms-user-select:none;
+    user-select:none
+}
+
+#root {
+    width:100%;
+    height: 100%;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+}
+
+.row {
+    display: grid;
+    grid-auto-flow: column;
+}
+.row:first-child .cell {
+    border-top: 1px solid black;
+}
+.row:nth-child(3) .cell:nth-child(3):before,
+.row:nth-child(3) .cell:nth-child(7):before,
+.row:nth-child(7) .cell:nth-child(3):before,
+.row:nth-child(7) .cell:nth-child(7):before {
+    content: "";
+    height: 1vmin;
+    width: 1vmin;
+    border-radius: 50%;
+    background: black;
+    position: absolute;
+    left: -.5vmin;
+    top: -.5vmin;
+    transform: matrix(1,0,0,1,0,0);
+}
+
+:root {
+    --transition-time: 400ms;
+}
+
+.reversed {
+    transition:
+        all var(--transition-time) cubic-bezier(0.25, 0.1, 0.25, 1),
+        background-color 0s calc(var(--transition-time) * 0.3),
+        background-image 0s calc(var(--transition-time) * 0.3),
+        opacity 0s;
+}
