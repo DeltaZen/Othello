@@ -7,7 +7,6 @@ import sys
 import htmlmin
 import lesscpy
 from jsmin import jsmin
-from transcrypt.__main__ import main as transcrypt
 
 
 def get_parser() -> argparse.ArgumentParser:
@@ -87,18 +86,19 @@ if __name__ == "__main__":
     if args.debug:
         files.append("eruda.min.js")
 
-    # TRANSCRYPT
-    ENTRY_POINT = "app"
-    sys.argv = ["transcrypt"]
-    if args.debug:
-        sys.argv.append("-n")
-    sys.argv.append(f"{ENTRY_POINT}.py")
-    transcrypt()
-    shutil.copytree("__target__", "build/__target__")
-    os.remove(f"build/__target__/{ENTRY_POINT}.project")
-
     if os.path.exists("assets"):
         shutil.copytree("assets", "build/assets")
+
+    # TRANSCRYPT
+    if os.path.exists("app.py"):
+        from transcrypt.__main__ import main as transcrypt
+        sys.argv = ["transcrypt"]
+        if args.debug:
+            sys.argv.append("-n")
+        sys.argv.append("app.py")
+        transcrypt()
+        shutil.copytree("__target__", "build/__target__")
+        os.remove(f"build/__target__/app.project")
 
     minify_js()
     minify_css()
