@@ -67,7 +67,9 @@ def minify_js() -> None:
             for filename in os.listdir("js"):
                 if not filename.endswith(".min.js"):
                     with open(f"js/{filename}", encoding="utf-8") as src:
-                        with open(f"build/js/{filename}", "w", encoding="utf-8") as dest:
+                        with open(
+                            f"build/js/{filename}", "w", encoding="utf-8"
+                        ) as dest:
                             dest.write(jsmin(src.read()))
 
 
@@ -92,12 +94,18 @@ def minify_css() -> None:
                             dest.write(lesscpy.compile(src, minify=True, xminify=True))
         else:
             files.extend(
-                [f"css/{name}" for name in os.listdir("css") if name.endswith(".min.css")]
+                [
+                    f"css/{name}"
+                    for name in os.listdir("css")
+                    if name.endswith(".min.css")
+                ]
             )
             for filename in os.listdir("css"):
                 if not filename.endswith(".min.css"):
                     with open(f"css/{filename}", encoding="utf-8") as src:
-                        with open(f"build/css/{filename}", "w", encoding="utf-8") as dest:
+                        with open(
+                            f"build/css/{filename}", "w", encoding="utf-8"
+                        ) as dest:
                             dest.write(lesscpy.compile(src, minify=True, xminify=True))
 
 
