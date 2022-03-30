@@ -28,39 +28,30 @@ def receive_update(update) -> None:
         S.request["join"] = payload["join"]
         S.request["addr"] = payload["addr"]
         S.request["name"] = payload["name"]
-        if not update["old"] and window.webxdc.selfAddr == S.black["addr"]:
-            accept_request(payload)
     elif payload["whiteAddr"] and not S.white["addr"]:
         S.white["addr"] = payload["whiteAddr"]
         S.white["name"] = payload["whiteName"]
 
-    if not update["old"]:
+    if update["serial"] == update["max_serial"]:
+        if (
+            not S.white["addr"]
+            and S.request["addr"]
+            and window.webxdc.selfAddr == S.black["addr"]
+        ):
+            accept_request(S.request)
         m.redraw()
 
 
-def receive_old_update(update) -> None:
-    update["old"] = True
-    receive_update(update)
-
-
-def _main(updates) -> None:
+def _main() -> None:
     S.game = Othello()
-    updates.forEach(receive_old_update)
-    if (
-        not S.white["addr"]
-        and S.request["addr"]
-        and window.webxdc.selfAddr == S.black["addr"]
-    ):
-        accept_request(S.request)
-
     root = document.getElementById("root")
     m.mount(
         root,
         {"view": lambda: m(BoardComponent if S.white["addr"] else HomeComponent)},
     )
 
-    window.webxdc.setUpdateListener(receive_update)
+    window.webxdc.setUpdateListener(receive_update, 0)
 
 
 def main():
-    window.addEventListener("load", lambda: window.webxdc.getAllUpdates().then(_main))
+    window.addEventListener("load", _main)

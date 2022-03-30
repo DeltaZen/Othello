@@ -2,8 +2,8 @@ name = "Othello"
 
 [store]
 id="com.github.adbenitez.Othello"
-version_name=0.3
-version_code=1
+version_name=1.0
+version_code=2
 author="adbenitez"
 author_email="adbenitez@nauta.cu"
 description="Play Othello/Reversi with your friends"
