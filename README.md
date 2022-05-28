@@ -2,6 +2,8 @@
 
 Othello/Reversi game implemented as webXdc app.
 
+[Download .xdc from Release Assets](https://github.com/webxdc/Othello.xdc/releases), attach to a Delta Chat group and play othello/reversi with a group member!
+
 ## Requirements
 
 This project depends on:
