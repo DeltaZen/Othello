@@ -5,7 +5,6 @@ import shutil
 import sys
 
 import htmlmin
-import lesscpy
 from jsmin import jsmin
 
 
@@ -88,10 +87,7 @@ def minify_css() -> None:
                     if not filename.endswith(".css"):
                         continue
                     with open(f"css/{filename}", encoding="utf-8") as src:
-                        if filename.endswith(".min.css"):
-                            dest.write(src.read())
-                        else:
-                            dest.write(lesscpy.compile(src, minify=True, xminify=True))
+                        dest.write(src.read())
         else:
             files.extend(
                 [
@@ -106,7 +102,7 @@ def minify_css() -> None:
                         with open(
                             f"build/css/{filename}", "w", encoding="utf-8"
                         ) as dest:
-                            dest.write(lesscpy.compile(src, minify=True, xminify=True))
+                            dest.write(src.read())
 
 
 def minify_html() -> None:

@@ -7,7 +7,13 @@ __pragma__("noskip")  # noqa
 
 from othello.game import BLACK, WHITE
 from othello.util import State as S
-from othello.util import create_element, get_summary, is_my_turn, is_observer
+from othello.util import (
+    create_element,
+    get_summary,
+    is_my_turn,
+    is_observer,
+    send_update,
+)
 
 
 class OthelloBoard:
@@ -79,5 +85,5 @@ def move(x: int, y: int) -> None:
     if S.game.move(x, y):
         update = {"payload": {"move": (x, y)}, "summary": get_summary()}
         if S.game.game_over():
-            update["info"] = "Othello: " + update["summary"]
-        window.webxdc.sendUpdate(update, f"Othello: {'abcdefgh'[y]}{8-x}")
+            update["info"] = update["summary"]
+        send_update(update)

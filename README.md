@@ -1,12 +1,12 @@
-# Othello.xdc
+# Othello
 
 Othello/Reversi game implemented as webXdc app.
 
 <img width=300 src=https://user-images.githubusercontent.com/9800740/170844337-ea1b94f0-fbe6-4b43-ad14-d9b9ba0ae3bc.png>
 
-[Download .xdc from Release Assets](https://github.com/webxdc/Othello/releases), attach to a Delta Chat group and play othello/reversi with a group member!
+## Contributing
 
-## Requirements
+### Requirements
 
 This project depends on:
 - [Python 3](https://python.org/)
@@ -18,7 +18,7 @@ Once you have Python installed execute:
 python -m pip install -r ./requirements.txt
 ```
 
-## Building
+### Building
 
 ```sh
 python ./build.py
@@ -26,7 +26,7 @@ python ./build.py
 
 The output is a file with `.xdc` extension.
 
-## Testing
+### Testing
 
 After building, you are ready to test the app. The project comes with an
 small simulator that allows to test your app in your browser, to do it
@@ -38,7 +38,7 @@ python -m http.server
 
 then open in your browser the URL that is displayed in the shell.
 
-## Releasing
+### Releasing
 
 To automatically build and create a new GitHub release with the `.xdc` file:
 
@@ -50,9 +50,3 @@ git push origin v1.0.1
 ## Credits
 
 Inspired by: https://codepen.io/hac-kimagure/pen/KLyWow
-
-## License
-
-Licensed GPLv3+, see the LICENSE file for details.
-
-Copyright © 2022  Asiel Díaz Benítez.

@@ -5,13 +5,15 @@ m: Any = print  # noqa
 window = document = console = Object = setTimeout = m
 __pragma__("noskip")  # noqa
 
+encoder = __new__(TextEncoder)
+
 
 class State:
     game = None
     board = None
-    white = dict(addr=None, name=None)
-    black = dict(addr=None, name=None)
-    request = dict(join=None, addr=None, name=None)
+    white = {"addr": None, "name": None, "time": 0}
+    black = {"addr": None, "name": None, "time": 0}
+    request = {"addr": None, "name": None, "time": 0}
     surrender_addr = None
     replay_mode = False
 
@@ -78,32 +80,36 @@ def get_summary() -> str:
     return status
 
 
+def send_update(update: dict) -> None:
+    json = window.JSON.stringify(update)
+    window.console.log("channel -> " + json)
+    window.channel.send(encoder.encode(json))
+    window.webxdc.sendUpdate(update, "")
+
+
 def accept_request(request) -> None:
     State.white["addr"] = request["addr"]
     State.white["name"] = request["name"]
-    desc = "Othello: " + normalize_name(request["name"]) + " joined the game"
+    State.white["time"] = request["time"]
     update = {
-        "payload": {
-            "whiteAddr": request["addr"],
-            "whiteName": request["name"],
-        },
+        "payload": {"accept": request},
         "summary": get_summary(),
     }
-    window.webxdc.sendUpdate(update, desc)
+    send_update(update)
 
 
 def join_game() -> None:
     addr = window.webxdc.selfAddr
     name = window.webxdc.selfName
-    update = {}
-    if not State.black["addr"]:
-        update["payload"] = {"blackAddr": addr, "blackName": name}
-        update["summary"] = normalize_name(name) + " is waiting for an opponent"
-        window.webxdc.sendUpdate(update, "Othello: " + update["summary"])
-    elif not State.white["addr"] and State.black["addr"] != addr:
-        update["payload"] = {"join": State.black["addr"], "addr": addr, "name": name}
-        update["summary"] = normalize_name(name) + " requested to join game"
-        window.webxdc.sendUpdate(update, "Othello: " + update["summary"])
+    if not State.black["addr"] or (
+        not State.white["addr"] and State.black["addr"] != addr
+    ):
+        now = __new__(Date)
+        update = {
+            "payload": {"addr": addr, "name": name, "time": now.valueOf()},
+            "info": normalize_name(name) + " wants to play Othello",
+        }
+        send_update(update)
     else:
         console.log("Warning: ignoring call to join_game()")
 
@@ -117,11 +123,9 @@ def surrender() -> None:
     winner = normalize_name(
         State.white["name"] if addr == State.black["addr"] else State.black["name"]
     )
-    update: dict = {
-        "payload": {"surrender": addr},
-        "summary": f"{normalize_name(window.webxdc.selfName)} surrenders, {winner} wins",
-    }
-    window.webxdc.sendUpdate(update, "Othello: " + update["summary"])
+    info = f"{normalize_name(window.webxdc.selfName)} surrenders, {winner} wins"
+    update: dict = {"payload": {"surrender": addr}, "summary": info, "info": info}
+    send_update(update)
 
 
 def replay() -> str:
