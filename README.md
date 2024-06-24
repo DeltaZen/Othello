@@ -2,8 +2,6 @@
 
 Othello/Reversi game implemented as webXdc app.
 
-<img width=300 src=https://user-images.githubusercontent.com/9800740/170844337-ea1b94f0-fbe6-4b43-ad14-d9b9ba0ae3bc.png>
-
 ## Contributing
 
 ### Requirements
