@@ -82,7 +82,7 @@ def minify_css() -> None:
                 bundle = True
 
         if bundle:
-            with open(f"build/css/bundle.css", "w", encoding="utf-8") as dest:
+            with open("build/css/bundle.css", "w", encoding="utf-8") as dest:
                 for filename in sorted(os.listdir("css")):
                     if not filename.endswith(".css"):
                         continue
@@ -140,7 +140,7 @@ if __name__ == "__main__":
         sys.argv.append("app.py")
         transcrypt()
         shutil.copytree("__target__", "build/__target__")
-        os.remove(f"build/__target__/app.project")
+        os.remove("build/__target__/app.project")
 
     minify_js()
     minify_css()
