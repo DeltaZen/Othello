@@ -35,9 +35,7 @@ class Observable:
 
 def create_element(tag, attributes, *children):
     element = document.createElement(tag)
-    Object.entries(attributes).forEach(
-        lambda entry: element.setAttribute(entry[0], entry[1])
-    )
+    Object.entries(attributes).forEach(lambda entry: element.setAttribute(entry[0], entry[1]))
     element.append(*children)
     return element
 
@@ -68,9 +66,7 @@ def get_summary() -> str:
             status += "it's a draw!"
         else:
             winner = normalize_name(
-                State.black["name"]
-                if score[BLACK] > score[WHITE]
-                else State.white["name"]
+                State.black["name"] if score[BLACK] > score[WHITE] else State.white["name"]
             )
             status += f"{winner} wins"
     else:
@@ -81,19 +77,21 @@ def get_summary() -> str:
 
 
 def send_update(update: dict) -> None:
-    json = window.JSON.stringify(update)
-    window.console.log("channel -> " + json)
-    window.channel.send(encoder.encode(json))
     window.webxdc.sendUpdate(update, "")
+    del update["info"], update["summary"], update["notify"]
+    window.channel.send(encoder.encode(window.JSON.stringify(update)))
 
 
 def accept_request(request) -> None:
     State.white["addr"] = request["addr"]
     State.white["name"] = request["name"]
     State.white["time"] = request["time"]
+    info = f'Game started! {State.black["name"]} 🆚 {State.white["name"]}'
     update = {
         "payload": {"accept": request},
         "summary": get_summary(),
+        "info": info,
+        "notify": {State.white["addr"]: info},
     }
     send_update(update)
 
@@ -101,14 +99,17 @@ def accept_request(request) -> None:
 def join_game() -> None:
     addr = window.webxdc.selfAddr
     name = window.webxdc.selfName
-    if not State.black["addr"] or (
-        not State.white["addr"] and State.black["addr"] != addr
-    ):
+    if not State.black["addr"] or (not State.white["addr"] and State.black["addr"] != addr):
         now = __new__(Date)
+        info = normalize_name(name) + " wants to play Othello"
         update = {
             "payload": {"addr": addr, "name": name, "time": now.valueOf()},
-            "info": normalize_name(name) + " wants to play Othello",
         }
+        if State.black["addr"]:
+            update["notify"] = {State.black["addr"]: info}
+        else:
+            update["info"] = info
+            update["notify"] = {"*": info}
         send_update(update)
     else:
         console.log("Warning: ignoring call to join_game()")
@@ -120,11 +121,20 @@ def surrender() -> None:
         return
 
     addr = window.webxdc.selfAddr
-    winner = normalize_name(
-        State.white["name"] if addr == State.black["addr"] else State.black["name"]
-    )
+    if addr == State.black["addr"]:
+        winner = normalize_name(State.white["name"])
+        winner_addr = State.white["addr"]
+    else:
+        winner = normalize_name(State.black["name"])
+        winner_addr = State.black["addr"]
+
     info = f"{normalize_name(window.webxdc.selfName)} surrenders, {winner} wins"
-    update: dict = {"payload": {"surrender": addr}, "summary": info, "info": info}
+    update: dict = {
+        "payload": {"surrender": addr},
+        "summary": info,
+        "info": info,
+        "notify": {winner_addr: info},
+    }
     send_update(update)
 
 

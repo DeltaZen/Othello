@@ -1,0 +1,18 @@
+{
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "start": "vite --port 3000",
+    "build:py": "transcrypt app.py",
+    "build:xdc": "vite build",
+    "build": "pnpm build:py && pnpm build:xdc"
+  },
+  "devDependencies": {
+    "@webxdc/vite-plugins": "latest",
+    "vite": "latest",
+    "vite-plugin-watch": "^0.3.1"
+  },
+  "dependencies": {
+    "mithril": "^2.2.11"
+  }
+}

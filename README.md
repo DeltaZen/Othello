@@ -8,33 +8,39 @@ Othello/Reversi game implemented as webXdc app.
 
 This project depends on:
 - [Python 3](https://python.org/)
-- [Transcrypt](https://www.transcrypt.org/)
+- [Transcrypt](https://www.transcrypt.org/): install it with: `pip install -r ./requirements.txt`
+- [pnpm](https://pnpm.io/) used for building the `.xdc` file and local emulator
 
-Once you have Python installed execute:
+Once you have all programs installed execute:
 
 ```sh
-python -m pip install -r ./requirements.txt
+pnpm i
+```
+
+### Testing
+
+To test your work in your browser (with hot reloading!) while developing:
+
+```sh
+pnpm start
 ```
 
 ### Building
 
-```sh
-python ./build.py
+To package the WebXDC file:
+
+```
+pnpm build
 ```
 
-The output is a file with `.xdc` extension.
+To package the WebXDC with developer tools inside to debug in Delta Chat, set the `NODE_ENV`
+environment variable to "debug":
 
-### Testing
-
-After building, you are ready to test the app. The project comes with an
-small simulator that allows to test your app in your browser, to do it
-just go to the root of the project and run this command:
-
-```sh
-python -m http.server
+```
+NODE_ENV=debug pnpm build
 ```
 
-then open in your browser the URL that is displayed in the shell.
+The resulting optimized `.xdc` file is saved in `dist-xdc/` folder.
 
 ### Releasing
 

@@ -63,9 +63,7 @@ class OthelloBoard:
         self.set_highlight()
 
     def set_highlight(self) -> None:
-        highlight = not S.game.surrendered and (
-            is_my_turn() or is_observer() or S.replay_mode
-        )
+        highlight = not S.game.surrendered and (is_my_turn() or is_observer() or S.replay_mode)
         moves = S.game.moves() if highlight else []
         for x, y in moves:
             self.board[x][y].cell.classList.add("highlight")
@@ -83,7 +81,19 @@ def move(x: int, y: int) -> None:
         return
 
     if S.game.move(x, y):
-        update = {"payload": {"move": (x, y)}, "summary": get_summary()}
+        summary = get_summary()
+        if window.webxdc.selfAddr == S.black["addr"]:
+            addr = S.white["addr"]
+        else:
+            addr = S.black["addr"]
+        update = {
+            "payload": {"move": (x, y)},
+            "summary": summary,
+        }
         if S.game.game_over():
-            update["info"] = update["summary"]
+            update["info"] = summary
+            update["notify"] = {addr: summary}
+        else:
+            update["notify"] = {addr: "It is your turn"}
+
         send_update(update)

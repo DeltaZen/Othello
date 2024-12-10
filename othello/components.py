@@ -15,9 +15,7 @@ class HomeComponent:
     @staticmethod
     def view() -> Any:
         document.getElementById("root").style["align-items"] = "center"
-        container = m(
-            "div#home", m("div.logo", [m("h1", "OTHELLO"), m("h1", "OTHELLO")])
-        )
+        container = m("div#home", m("div.logo", [m("h1", "OTHELLO"), m("h1", "OTHELLO")]))
 
         if S.black["addr"] == window.webxdc.selfAddr:
             container.children.push(m("h3.sub", "Waiting for opponent..."))
@@ -77,9 +75,7 @@ class BoardComponent:
         )
         turn = S.black["addr"] if S.game.turn == BLACK else S.white["addr"]
         if S.game.game_over():
-            container.children.push(
-                m("a", {"class": "btn", "onclick": replay}, "Replay")
-            )
+            container.children.push(m("a", {"class": "btn", "onclick": replay}, "Replay"))
         elif window.webxdc.selfAddr == turn and not S.replay_mode:
             container.children.push(
                 m(

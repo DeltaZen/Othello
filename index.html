@@ -1,21 +1,17 @@
 <!DOCTYPE html>
 <html>
-    <head>
+  <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-        <link rel="stylesheet" href="css/index.css">
-
-        <script src="webxdc.js"></script>
-        <script src="js/mithril.min.js"></script>
-    </head>
-    <body>
-        <div id="root"></div>
-
-        <script type="module">import * as app from './__target__/app.js'; window.app = app;</script>
-
-        <!-- debugging -->
-        <script src="eruda.min.js"></script>
-        <script>eruda.init();</script>
-    </body>
+    <link rel="stylesheet" href="./index.css">
+    <script src="webxdc.js"></script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module">
+     import m from "mithril";
+     window.m = m;
+     import "./__target__/app.js";
+    </script>
+  </body>
 </html>

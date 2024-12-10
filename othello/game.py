@@ -31,9 +31,7 @@ class Othello(Observable):
         other_disk = WHITE if disk == BLACK else BLACK
         for xdir, ydir in _DIRECTIONS:
             newx, newy = x + xdir, y + ydir
-            while (
-                self._is_on_board(newx, newy) and self.board[newx][newy] == other_disk
-            ):
+            while self._is_on_board(newx, newy) and self.board[newx][newy] == other_disk:
                 newx += xdir
                 newy += ydir
             if (
@@ -52,9 +50,7 @@ class Othello(Observable):
         flipped = []
         for xdir, ydir in _DIRECTIONS:
             newx, newy = x + xdir, y + ydir
-            while (
-                self._is_on_board(newx, newy) and self.board[newx][newy] == other_disk
-            ):
+            while self._is_on_board(newx, newy) and self.board[newx][newy] == other_disk:
                 newx += xdir
                 newy += ydir
             if not self._is_on_board(newx, newy) or self.board[newx][newy] != disk:
@@ -107,9 +103,7 @@ class Othello(Observable):
 
     def game_over(self) -> bool:
         """Returns True if the game is over, False otherwise"""
-        return self.surrendered or (
-            not self._can_move(BLACK) and not self._can_move(WHITE)
-        )
+        return self.surrendered or (not self._can_move(BLACK) and not self._can_move(WHITE))
 
     def move(self, x: int, y: int) -> bool:
         flipped = self._get_flipped(self.turn, x, y)

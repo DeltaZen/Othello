@@ -5,7 +5,6 @@ m: Any = print  # noqa
 window = document = console = m
 __pragma__("noskip")  # noqa
 
-
 from othello.components import BoardComponent, HomeComponent
 from othello.game import Othello
 from othello.util import State as S
@@ -43,11 +42,7 @@ def receive_update(update) -> None:
             S.white["time"] = white["time"]
 
     if update["serial"] == update["max_serial"]:
-        if (
-            not S.white["addr"]
-            and S.request["addr"]
-            and window.webxdc.selfAddr == S.black["addr"]
-        ):
+        if not S.white["addr"] and S.request["addr"] and window.webxdc.selfAddr == S.black["addr"]:
             accept_request(S.request)
         m.redraw()
 

@@ -1,5 +1,7 @@
 __target__/
 __pycache__/
-build/
-*.xdc
+node_modules
+venv
+dist
+dist-xdc
 *~
